@@ -190,8 +190,22 @@ public class BasicActions extends Base {
 //		actions.clickAndHold(SliderElement).moveByOffset(offset, 0).release().perform();
 	}
 
-	public void ProgressBar() {
+	public void hoverOverElement(List<WebElement> elements, int index) {
 
+		// Verify index is within bounds
+		if (index >= 0 && index < elements.size()) {
+			WebElement elementToHover = elements.get(index);
+
+			// Use Actions class to hover over the specific element
+			actions.moveToElement(elementToHover).perform();
+		} else {
+			System.out.println("Index out of bounds for WebElements list");
+		}
+	}
+
+	public void HoverOverElement(WebElement HoverElement) {
+		WaitForElementToBeVisibile(HoverElement);
+		actions.moveToElement(HoverElement).perform();
 	}
 
 	public void HoverOverElementNdGetText(WebElement HoverElement, WebElement HoverTxtElement, String HoverTxt) {

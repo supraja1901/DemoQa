@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-08T18:26:54 IST" name="Default suite" finished-at="2024-11-08T18:27:09 IST" duration-ms="14857">
+  <suite started-at="2024-11-10T20:22:48 IST" name="Default suite" finished-at="2024-11-10T20:23:00 IST" duration-ms="12199">
     <groups>
     </groups>
-    <test started-at="2024-11-08T18:26:54 IST" name="Default test" finished-at="2024-11-08T18:27:09 IST" duration-ms="14857">
-      <class name="widgets.ToolTipTests">
-        <test-method is-config="true" signature="StartBrowser()[pri:0, instance:widgets.ToolTipTests@56cdfb3b]" started-at="2024-11-08T18:26:54 IST" name="StartBrowser" finished-at="2024-11-08T18:27:08 IST" duration-ms="13237" status="PASS">
+    <test started-at="2024-11-10T20:22:48 IST" name="Default test" finished-at="2024-11-10T20:23:00 IST" duration-ms="12199">
+      <class name="widgets.MenuTests">
+        <test-method is-config="true" signature="StartBrowser()[pri:0, instance:widgets.MenuTests@56cdfb3b]" started-at="2024-11-10T20:22:48 IST" name="StartBrowser" finished-at="2024-11-10T20:22:59 IST" duration-ms="11534" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- StartBrowser -->
-        <test-method signature="ToolTipTest()[pri:0, instance:widgets.ToolTipTests@56cdfb3b]" started-at="2024-11-08T18:27:08 IST" name="ToolTipTest" finished-at="2024-11-08T18:27:09 IST" duration-ms="1607" status="PASS">
+        <test-method signature="MenuTest()[pri:0, instance:widgets.MenuTests@56cdfb3b]" started-at="2024-11-10T20:22:59 IST" name="MenuTest" finished-at="2024-11-10T20:23:00 IST" duration-ms="651" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- ToolTipTest -->
-      </class> <!-- widgets.ToolTipTests -->
+        </test-method> <!-- MenuTest -->
+      </class> <!-- widgets.MenuTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

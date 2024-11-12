@@ -89,6 +89,24 @@ public class BasicActions extends Base {
 		}
 	}
 
+	public void UnSelectWthGetAttribute(WebElement Element) {
+		WaitForElementToBeClickable(Element);
+		String ActualAttributeValue = Element.getAttribute("class");
+		if (ActualAttributeValue.contains("active")) {
+			click(Element);
+		}
+	}
+
+	public void SelectWthGetAttribute(WebElement Element) {
+		WaitForElementToBeClickable(Element);
+		String ActualAttributeValue = Element.getAttribute("class");
+		if (ActualAttributeValue.contains("active")) {
+
+		} else {
+			click(Element);
+		}
+	}
+
 	public void ClickRadioBtn(WebElement RadioBtn, WebElement ValidateRadioBtn) {
 		WaitForElementToBeVisibile(RadioBtn);
 		if (ValidateRadioBtn.isEnabled()) {
@@ -170,6 +188,12 @@ public class BasicActions extends Base {
 		ElementsList.stream().filter(s -> s.getText().contains(Value)).findAny().get().click();
 	}
 
+	public void SelectElementFromDropdown(WebElement DropdownElement, List<WebElement> ElementsList, String Value) {
+		click(DropdownElement);
+		SelectElementFromList(ElementsList, Value);
+
+	}
+
 	public void MoveSlider(WebElement SliderElement, int targetValue) {
 		WaitForElementToBeVisibile(SliderElement);
 //		js.executeScript("arguments[0].value = arguments[1];" + "arguments[0].dispatchEvent(new Event('change'));",
@@ -212,6 +236,14 @@ public class BasicActions extends Base {
 		WaitForElementToBeVisibile(HoverElement);
 		actions.moveToElement(HoverElement).perform();
 		AssertWithContains(HoverTxtElement, HoverTxt);
+	}
+
+	public void SortElements(WebElement Element1, WebElement Element2) {
+		WaitForElementToBeVisibile(Element1);
+		WaitForElementToBeVisibile(Element2);
+//		We cannot use actions.draganddrop because Lists that change positions or styles dynamically can 
+//		cause dragAndDrop() to lose track of targets.
+		actions.clickAndHold(Element1).moveToElement(Element2).release().perform();
 	}
 
 	public void BrokenImage(WebElement ImageLocator) {

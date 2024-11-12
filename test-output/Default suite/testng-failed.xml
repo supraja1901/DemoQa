@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="widgets.MenuTests">
+      <class name="interactionsTests.SortableTests">
         <methods>
-          <include name="MenuTest"/>
           <include name="StartBrowser"/>
+          <include name="SortableTest"/>
         </methods>
-      </class> <!-- widgets.MenuTests -->
+      </class> <!-- interactionsTests.SortableTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

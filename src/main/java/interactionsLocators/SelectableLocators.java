@@ -9,7 +9,7 @@ import Resources.Base;
 
 public class SelectableLocators extends Base {
 
-	@FindBy(xpath = "//div[@id='demo-tabpane-list']/ul/li")
+	@FindBy(xpath = "//ul[@id='verticalListContainer']/li")
 	List<WebElement> ListWebElements;
 
 	@FindBy(xpath = "//div[@id='row1']/li")

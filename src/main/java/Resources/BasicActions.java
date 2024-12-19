@@ -47,7 +47,6 @@ public class BasicActions extends Base {
 	public void SendKeys(WebElement Element, String Value) {
 		WaitForElementToBeVisibile(Element);
 		Element.sendKeys(Value);
-		;
 	}
 
 	public String GetText(WebElement Element) {
@@ -100,11 +99,9 @@ public class BasicActions extends Base {
 	public void SelectWthGetAttribute(WebElement Element) {
 		WaitForElementToBeClickable(Element);
 		String ActualAttributeValue = Element.getAttribute("class");
-		if (ActualAttributeValue.contains("active")) {
-
-		} else {
+		if (!ActualAttributeValue.contains("active")) {
 			click(Element);
-		}
+		} 
 	}
 
 	public void ClickRadioBtn(WebElement RadioBtn, WebElement ValidateRadioBtn) {

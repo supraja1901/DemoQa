@@ -12,6 +12,11 @@ public class linksTest extends Base {
 
 	@Test
 	public void LinksTest() throws InterruptedException {
+		if (driver != null) {
+			System.out.println("I'm not null");
+		} else {
+			System.out.println("I'm null");
+		}
 
 		String LinkText = "Links";
 		String CreatedResponse = "Link has responded with staus 201 and status text Created";
@@ -23,8 +28,8 @@ public class linksTest extends Base {
 		String NotFound = "Link has responded with staus 404 and status text Not Found";
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		linksLocators ll = PageFactory.initElements(driver, linksLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		linksLocators ll = PageFactory.initElements(Driver(), linksLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageElement(), hpl.Links());
 		ba.GetTextNdAssert(ll.LinksHeading(), LinkText);

@@ -17,8 +17,8 @@ public class FramesTests extends Base {
 		String ParentFrameText = "Sample Iframe page There are 2 Iframes in this page";
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		FramesLocators fl = PageFactory.initElements(driver, FramesLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		FramesLocators fl = PageFactory.initElements(Driver(), FramesLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageAlertsFramesWindows(), hpl.Frames());
 		ba.SwitchToFrame(fl.Frame1());

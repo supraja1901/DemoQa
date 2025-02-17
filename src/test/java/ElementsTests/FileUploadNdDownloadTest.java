@@ -13,11 +13,11 @@ public class FileUploadNdDownloadTest extends Base {
 	@Test
 	public void FileDownloadtest() {
 
-		String FilePath = "/Users/raj/Downloads/sampleFile.jpeg";
+		String FilePath = "/Users/mone/Downloads/sampleFile.jpeg";
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		UploadNdDownloadLocators udl = PageFactory.initElements(driver, UploadNdDownloadLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		UploadNdDownloadLocators udl = PageFactory.initElements(Driver(), UploadNdDownloadLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageElement(), hpl.uploadNdDownload());
 		ba.click(udl.DownloadLink());

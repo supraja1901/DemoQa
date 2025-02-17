@@ -15,9 +15,9 @@ public class SelectableTests extends Base {
 	public void SelectableTest() {
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		SortableLocators stl = PageFactory.initElements(driver, SortableLocators.class);
-		SelectableLocators scl = PageFactory.initElements(driver, SelectableLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		SortableLocators stl = PageFactory.initElements(Driver(), SortableLocators.class);
+		SelectableLocators scl = PageFactory.initElements(Driver(), SelectableLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageInteractions(), hpl.Selectable());
 		ba.click(stl.List());

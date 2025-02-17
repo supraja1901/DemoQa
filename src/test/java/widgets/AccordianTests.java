@@ -18,8 +18,8 @@ public class AccordianTests extends Base {
 
 		BasicActions ba = new BasicActions();
 
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		AccordianLocators al = PageFactory.initElements(driver, AccordianLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		AccordianLocators al = PageFactory.initElements(Driver(), AccordianLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageWidgets(), hpl.Accordian());
 //		ba.click(al.section1Heading());

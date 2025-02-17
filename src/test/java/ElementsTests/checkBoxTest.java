@@ -21,8 +21,8 @@ public class checkBoxTest extends Base {
 //		String attributeKey="class";
 //		String ExpectedAttributeValue="rct-icon-check";
 		BasicActions ba = new BasicActions();
-		CheckBoxLocators cbl = PageFactory.initElements(driver, CheckBoxLocators.class);
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
+		CheckBoxLocators cbl = PageFactory.initElements(Driver(), CheckBoxLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
 		ba.NavToReqModule(hpl.HomePageElement(), hpl.CheckBox());
 		ba.SelectCheckbox(cbl.homeChkBox());
 		System.out.println(cbl.ValidatehomeChkBox().isSelected());

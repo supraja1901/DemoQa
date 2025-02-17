@@ -16,18 +16,16 @@ public class ResizableTests extends Base {
 	public void ResizableTest() {
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		ResizableLocators rl = PageFactory.initElements(driver, ResizableLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		ResizableLocators rl = PageFactory.initElements(Driver(), ResizableLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageInteractions(), hpl.Resizable());
-		Actions actions = new Actions(driver);
+		Actions actions = new Actions(Driver());
 
 		System.out.println(rl.resizableRestrictionElement().getSize());
-	    JavascriptExecutor js = (JavascriptExecutor) driver;
-	    js.executeScript(
-	            "arguments[0].style.width='250px'; arguments[0].style.height='150px';",
-	            rl.resizableRestrictionElement()
-	        );
+		JavascriptExecutor js = (JavascriptExecutor) Driver();
+		js.executeScript("arguments[0].style.width='250px'; arguments[0].style.height='150px';",
+				rl.resizableRestrictionElement());
 		System.out.println(rl.resizableRestrictionElement().getSize());
 //		actions.clickAndHold(rl.resizableRestrictionElement()).moveByOffset(300, 400) // Adjust width and height
 //				.release().perform();

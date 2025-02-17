@@ -21,8 +21,8 @@ public class WebTablesTest extends Base {
 		String Department = "Testing";
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		webTablesLocators wtl = PageFactory.initElements(driver, webTablesLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		webTablesLocators wtl = PageFactory.initElements(Driver(), webTablesLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageElement(), hpl.WebTables());
 		ba.click(wtl.AddBtn());

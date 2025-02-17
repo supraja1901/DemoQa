@@ -13,12 +13,12 @@ public class AlertsTest extends Base {
 	@Test
 	public void AlertTests() {
 
-		String PromptInput="Supraja";
-		
+		String PromptInput = "Supraja";
+
 		BasicActions ba = new BasicActions();
 
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		AlertsLocators al = PageFactory.initElements(driver, AlertsLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		AlertsLocators al = PageFactory.initElements(Driver(), AlertsLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageAlertsFramesWindows(), hpl.Alerts());
 		ba.click(al.AlertBtn());

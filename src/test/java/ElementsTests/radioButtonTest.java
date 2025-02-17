@@ -16,8 +16,8 @@ public class radioButtonTest extends Base {
 		String YesResult = "You have selected Yes";
 		String ImpressiveResult = "You have selected Impressive";
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		radioButtonsLocators rbl = PageFactory.initElements(driver, radioButtonsLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		radioButtonsLocators rbl = PageFactory.initElements(Driver(), radioButtonsLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageElement(), hpl.RadioButton());
 		ba.ScrollUsingJSE(rbl.RadioButton());

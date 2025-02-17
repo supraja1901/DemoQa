@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import Resources.Base;
 import Resources.BasicActions;
+import Resources.DriverFactory;
 import alertFramesNdWindowsLocators.NestedFramesLocators;
 import elementsLocators.homePageLocators;
 
@@ -18,8 +19,9 @@ public class NestedFrameTest extends Base {
 		String ChildFrameText = "Child Iframe";
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		NestedFramesLocators nfl = PageFactory.initElements(driver, NestedFramesLocators.class);
+		homePageLocators hpl = PageFactory.initElements(DriverFactory.getInstance().getDriver(), homePageLocators.class);
+		NestedFramesLocators nfl = PageFactory.initElements(DriverFactory.getInstance().getDriver(),
+				NestedFramesLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageAlertsFramesWindows(), hpl.NestedFrames());
 		ba.AssertWithContains(nfl.DefaultFrameText(), defaultFrameText);

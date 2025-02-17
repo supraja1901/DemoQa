@@ -22,8 +22,8 @@ public class textBoxTest extends Base {
 //		then it invokes driver but driver is defined as chromeDriver in OpenBrowser only so invoking browser make driver null
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		textBoxLocators tbl = PageFactory.initElements(driver, textBoxLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		textBoxLocators tbl = PageFactory.initElements(Driver(), textBoxLocators.class);
 		ba.NavToReqModule(hpl.HomePageElement(), hpl.TextBox());
 		ba.GetTextNdAssert(tbl.textBox(), "Text Box");
 		ba.SendKeys(tbl.fullName(), FullName);

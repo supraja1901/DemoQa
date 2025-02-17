@@ -18,8 +18,8 @@ public class buttonsTest extends Base {
 		String DynamicClkMsg = "You have done a dynamic click";
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		buttonsLocators bl = PageFactory.initElements(driver, buttonsLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		buttonsLocators bl = PageFactory.initElements(Driver(), buttonsLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageElement(), hpl.Buttons());
 		ba.DoubleClick(bl.DoubleClickButton());

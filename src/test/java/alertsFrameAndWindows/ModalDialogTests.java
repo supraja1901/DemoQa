@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import Resources.Base;
 import Resources.BasicActions;
+import Resources.DriverFactory;
 import alertFramesNdWindowsLocators.ModalDialogLoctaors;
 import elementsLocators.homePageLocators;
 
@@ -18,8 +19,10 @@ public class ModalDialogTests extends Base {
 
 		BasicActions ba = new BasicActions();
 
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		ModalDialogLoctaors mdl = PageFactory.initElements(driver, ModalDialogLoctaors.class);
+		homePageLocators hpl = PageFactory.initElements(DriverFactory.getInstance().getDriver(),
+				homePageLocators.class);
+		ModalDialogLoctaors mdl = PageFactory.initElements(DriverFactory.getInstance().getDriver(),
+				ModalDialogLoctaors.class);
 
 		ba.NavToReqModule(hpl.HomePageAlertsFramesWindows(), hpl.ModalDialogs());
 		ba.click(mdl.SmallModal());

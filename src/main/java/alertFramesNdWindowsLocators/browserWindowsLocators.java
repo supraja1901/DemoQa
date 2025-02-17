@@ -19,7 +19,7 @@ public class browserWindowsLocators extends Base {
 	@FindBy(xpath = "//h1[@id='sampleHeading']")
 	WebElement NewWTabMsg;
 
-	@FindBy(xpath = "//body/text()")
+	@FindBy(xpath = "//text()")
 	WebElement NewWindowMsg;
 
 	public WebElement NewWindowMsg() {

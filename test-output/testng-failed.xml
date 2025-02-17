@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="interactionsTests.SortableTests">
+      <class name="widgets.ToolTipTests">
         <methods>
-          <include name="StartBrowser"/>
-          <include name="SortableTest"/>
+          <include name="LaunchApplication"/>
+          <include name="tearDown"/>
+          <include name="ToolTipTest"/>
         </methods>
-      </class> <!-- interactionsTests.SortableTests -->
+      </class> <!-- widgets.ToolTipTests -->
+      <class name="interactionsTests.DroppableTests">
+        <methods>
+          <include name="LaunchApplication"/>
+          <include name="tearDown"/>
+          <include name="DropTest"/>
+        </methods>
+      </class> <!-- interactionsTests.DroppableTests -->
+      <class name="widgets.MenuTests">
+        <methods>
+          <include name="MenuTest"/>
+          <include name="LaunchApplication"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- widgets.MenuTests -->
+      <class name="ElementsTests.BrokenLInksImagesTest">
+        <methods>
+          <include name="BrokenImagesTest"/>
+          <include name="BrokenLinkTest"/>
+          <include name="LaunchApplication"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- ElementsTests.BrokenLInksImagesTest -->
+      <class name="alertsFrameAndWindows.BrowserWindowsTest">
+        <methods>
+          <include name="LaunchApplication"/>
+          <include name="BrowserWindow"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- alertsFrameAndWindows.BrowserWindowsTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

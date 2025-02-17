@@ -18,16 +18,22 @@ public class ProgressBarTests extends Base {
 	public void ProgressBarTest() {
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		ProgressBarLocators pbl = PageFactory.initElements(driver, ProgressBarLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		ProgressBarLocators pbl = PageFactory.initElements(Driver(), ProgressBarLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageWidgets(), hpl.ProgressBar());
 		ba.click(pbl.StartStopBtn());
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5000));
+		WebDriverWait wait = new WebDriverWait(Driver(), Duration.ofSeconds(5000));
 		boolean progressStatus = wait
 				.until(ExpectedConditions.attributeToBe(pbl.progressBar(), "aria-valuenow", "100"));
 		if (progressStatus == true) {
 			wait.until(ExpectedConditions.elementToBeClickable(pbl.ResetBtn())).click();
+		}
+		ba.click(pbl.StartStopBtn());
+		boolean progressStatus1 = wait
+				.until(ExpectedConditions.attributeToBe(pbl.progressBar(), "aria-valuenow", "10"));
+		if (progressStatus1 == true) {
+			wait.until(ExpectedConditions.elementToBeClickable(pbl.StartStopBtn())).click();
 		}
 
 	}

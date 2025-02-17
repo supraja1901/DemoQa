@@ -14,8 +14,8 @@ public class SelectMenuTests extends Base {
 	public void SelectMenuTest() {
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		SelectMenuLocators sml = PageFactory.initElements(driver, SelectMenuLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		SelectMenuLocators sml = PageFactory.initElements(Driver(), SelectMenuLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageWidgets(), hpl.SelectMenu());
 		ba.SelectElementFromDropdown(sml.SelectValue(), sml.SelectValueList(), "Group 1, option 2");

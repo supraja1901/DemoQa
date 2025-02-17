@@ -18,8 +18,8 @@ public class TabTests extends Base {
 		String UseTabText = "It is a long established fact that a reader";
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		TabsLocators tl = PageFactory.initElements(driver, TabsLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		TabsLocators tl = PageFactory.initElements(Driver(), TabsLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageWidgets(), hpl.Tabs());
 		ba.click(tl.WhatTab());

@@ -17,19 +17,19 @@ public class DynamicPropertiesTest extends Base {
 	@Test
 	public void DynamicPropTest() {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		WebDriverWait wait = new WebDriverWait(Driver(), Duration.ofSeconds(5));
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		dynamicPropertiesLocators dpl = PageFactory.initElements(driver, dynamicPropertiesLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		dynamicPropertiesLocators dpl = PageFactory.initElements(Driver(), dynamicPropertiesLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageElement(), hpl.dynamicProperties());
 		System.out.println(dpl.EnableAfterButton().isEnabled());
 //		System.out.println(dpl.visibleAfterButton().isDisplayed());
-		System.out.println(dpl.ColourChangeButton().getAttribute("class").contains("danger"));
+		System.out.println(dpl.ColourChangeButton().getDomAttribute("class").contains("danger"));
 		wait.until(ExpectedConditions.visibilityOf(dpl.visibleAfterButton()));
 		System.out.println(dpl.EnableAfterButton().isEnabled());
 		System.out.println(dpl.visibleAfterButton().isDisplayed());
-		System.out.println(dpl.ColourChangeButton().getAttribute("class").contains("danger"));
+		System.out.println(dpl.ColourChangeButton().getDomAttribute("class").contains("danger"));
 
 	}
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<test thread-count="3" name="Test" parallel="true">
+		<classes>
+			<class name="alertsFrameAndWindows.BrowserWindowsTest" />
+			<class name="ElementsTests.BrokenLInksImagesTest">
+				<methods>
+					<include name="BrokenImagesTest" />
+					<include name="BrokenLinkTest" />
+				</methods>
+			</class>
+			<class name="ElementsTests.linksTest" />
+			<class name="ElementsTests.DynamicPropertiesTest" />
+			<class name="widgets.TabTests" />
+			<class name="ElementsTests.textBoxTest" />
+			<class name="ElementsTests.FileUploadNdDownloadTest" />
+			<class name="alertsFrameAndWindows.NestedFrameTest" />
+			<class name="alertsFrameAndWindows.AlertsTest" />
+			<class name="widgets.MenuTests" />
+			<class name="interactionsTests.SelectableTests" />
+			<class name="interactionsTests.DroppableTests" />
+			<class name="interactionsTests.ResizableTests" />
+			<class name="widgets.ToolTipTests" />
+			<class name="alertsFrameAndWindows.FramesTests" />
+			<class name="interactionsTests.SortableTests" />
+			<class name="widgets.SliderTests" />
+			<class name="widgets.AccordianTests" />
+			<class name="widgets.AutoCompleteTests" />
+			<class name="ElementsTests.WebTablesTest" />
+			<class name="ElementsTests.checkBoxTest" />
+			<class name="ElementsTests.radioButtonTest" />
+			<class name="widgets.SelectMenuTests" />
+			<class name="ElementsTests.buttonsTest" />
+			<class name="alertsFrameAndWindows.ModalDialogTests" />
+			<class name="widgets.ProgressBarTests" />
+		</classes>
+	</test> <!--
+	Test -->
+</suite> <!--
+Suite -->
+
+

@@ -18,15 +18,21 @@ public class AutoCompleteTests extends Base {
 		String SingleColour = "Yellow";
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		AutoCompleteLocators acl = PageFactory.initElements(driver, AutoCompleteLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		AutoCompleteLocators acl = PageFactory.initElements(Driver(), AutoCompleteLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageWidgets(), hpl.AutoComplete());
+		ba.ScrollUsingJSE(acl.MultipleColourInput());
 		ba.SendKeys(acl.MultipleColourInput(), MultiColour1);
+		ba.ScrollUsingJSE(acl.MultipleColourInput());
 		ba.SelectElementFromList(acl.MultiColourOptions(), MultiColour1);
+		ba.ScrollUsingJSE(acl.MultipleColourInput());
 		ba.SendKeys(acl.MultipleColourInput(), MultiColour2);
+		ba.ScrollUsingJSE(acl.MultipleColourInput());
 		ba.SelectElementFromList(acl.MultiColourOptions(), MultiColour2);
+		ba.ScrollUsingJSE(acl.SingleColourInput());
 		ba.SendKeys(acl.SingleColourInput(), SingleColour);
+		ba.ScrollUsingJSE(acl.SingleColourInput());
 		ba.SelectElementFromList(acl.singleColourOptions(), SingleColour);
 
 	}

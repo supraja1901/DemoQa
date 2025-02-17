@@ -14,8 +14,8 @@ public class SortableTests extends Base {
 	public void SortableTest() {
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		SortableLocators stl = PageFactory.initElements(driver, SortableLocators.class);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		SortableLocators stl = PageFactory.initElements(Driver(), SortableLocators.class);
 
 		ba.NavToReqModule(hpl.HomePageInteractions(), hpl.Sortable());
 		ba.click(stl.List());

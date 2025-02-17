@@ -18,9 +18,9 @@ public class ToolTipTests extends Base {
 		String TxtFieldHoverTxt = "You hovered over the text field";
 
 		BasicActions ba = new BasicActions();
-		homePageLocators hpl = PageFactory.initElements(driver, homePageLocators.class);
-		ToolTipsLocators ttl = PageFactory.initElements(driver, ToolTipsLocators.class);
-		Actions actions = new Actions(driver);
+		homePageLocators hpl = PageFactory.initElements(Driver(), homePageLocators.class);
+		ToolTipsLocators ttl = PageFactory.initElements(Driver(), ToolTipsLocators.class);
+		Actions actions = new Actions(Driver());
 
 		ba.NavToReqModule(hpl.HomePageWidgets(), hpl.ToolTips());
 		actions.moveToElement(ttl.BtnHover()).perform();

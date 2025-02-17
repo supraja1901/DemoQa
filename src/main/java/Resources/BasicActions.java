@@ -6,20 +6,36 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.List;
 
-import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class BasicActions extends Base {
+	WebDriver driver = Driver();
 
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	static JavascriptExecutor js = (JavascriptExecutor) driver;
-	Actions actions = new Actions(driver);
+	WebDriverWait wait = new WebDriverWait(Driver(), Duration.ofSeconds(30));
+	JavascriptExecutor js = (JavascriptExecutor) Driver();
+	Actions actions = new Actions(Driver());
+//	Alert alert = driver.switchTo().alert();
+
+	public void waitForPageLoad(WebDriver driver) {
+		wait.until(new ExpectedCondition<Boolean>() {
+			@Override
+			public Boolean apply(WebDriver driver) {
+				return (js.executeScript("return document.readyState").equals("complete"));
+			}
+		});
+	}
+
+	public void waitForElementTextToBe(WebElement element, String expectedText) {
+		wait.until(ExpectedConditions.textToBePresentInElement(element, expectedText));
+	}
 
 	public void WaitForElementToBeVisibile(WebElement Element) {
 		wait.until(ExpectedConditions.visibilityOf(Element));
@@ -90,7 +106,7 @@ public class BasicActions extends Base {
 
 	public void UnSelectWthGetAttribute(WebElement Element) {
 		WaitForElementToBeClickable(Element);
-		String ActualAttributeValue = Element.getAttribute("class");
+		String ActualAttributeValue = Element.getDomAttribute("class");
 		if (ActualAttributeValue.contains("active")) {
 			click(Element);
 		}
@@ -98,10 +114,10 @@ public class BasicActions extends Base {
 
 	public void SelectWthGetAttribute(WebElement Element) {
 		WaitForElementToBeClickable(Element);
-		String ActualAttributeValue = Element.getAttribute("class");
+		String ActualAttributeValue = Element.getDomAttribute("class");
 		if (!ActualAttributeValue.contains("active")) {
 			click(Element);
-		} 
+		}
 	}
 
 	public void ClickRadioBtn(WebElement RadioBtn, WebElement ValidateRadioBtn) {
@@ -134,20 +150,20 @@ public class BasicActions extends Base {
 	}
 
 	public void switchWindowHandles() {
-		String newTabHandle = driver.getWindowHandles().stream()
-				.filter(handle -> !handle.equals(driver.getWindowHandle())).findFirst()
+		String newTabHandle = Driver().getWindowHandles().stream()
+				.filter(handle -> !handle.equals(Driver().getWindowHandle())).findFirst()
 				.orElseThrow(() -> new RuntimeException("New tab not found"));
 
-		driver.switchTo().window(newTabHandle);
+		Driver().switchTo().window(newTabHandle);
 
 	}
 
 	public void SwitchToFrame(WebElement FrameElement) {
-		driver.switchTo().frame(FrameElement);
+		Driver().switchTo().frame(FrameElement);
 	}
 
 	public void SwitchBackToDefaultFrame() {
-		driver.switchTo().defaultContent();
+		Driver().switchTo().defaultContent();
 	}
 
 	public void WaitForAlert() {
@@ -157,26 +173,26 @@ public class BasicActions extends Base {
 
 	public void acceptAlert() {
 		WaitForAlert();
-		Alert alert = driver.switchTo().alert();
+		Alert alert = Driver().switchTo().alert();
 		alert.accept();
 	}
 
 	public void DismissAlert() {
 		WaitForAlert();
-		Alert alert = driver.switchTo().alert();
+		Alert alert = Driver().switchTo().alert();
 		alert.dismiss();
 	}
 
 	public void PromptAlert(String Prompt) {
 		WaitForAlert();
-		Alert alert = driver.switchTo().alert();
+		Alert alert = Driver().switchTo().alert();
 		alert.sendKeys(Prompt);
 		alert.accept();
 	}
 
 	public void GetTextAlert() {
 		WaitForAlert();
-		Alert alert = driver.switchTo().alert();
+		Alert alert = Driver().switchTo().alert();
 		System.out.println(alert.getText());
 	}
 
@@ -195,15 +211,15 @@ public class BasicActions extends Base {
 		WaitForElementToBeVisibile(SliderElement);
 //		js.executeScript("arguments[0].value = arguments[1];" + "arguments[0].dispatchEvent(new Event('change'));",
 //				SliderElement, targetValue);
-		int minValue = Integer.parseInt(SliderElement.getAttribute("min"));
-		int maxValue = Integer.parseInt(SliderElement.getAttribute("max"));
-		int currentValue = Integer.parseInt(SliderElement.getAttribute("value")); // Current slider value
+		int minValue = Integer.parseInt(SliderElement.getDomAttribute("min"));
+		int maxValue = Integer.parseInt(SliderElement.getDomAttribute("max"));
+		int currentValue = Integer.parseInt(SliderElement.getDomAttribute("value")); // Current slider value
 
 		// Calculate the offset to move the slider to the target value
 		int sliderWidth = SliderElement.getSize().getWidth();
 		int range = maxValue - minValue;
 		double pixelsPerUnit = (double) sliderWidth / range;
-		int offset = (int) ((targetValue) * pixelsPerUnit);
+//		int offset = (int) ((targetValue) * pixelsPerUnit);
 		int offsetMin = (int) ((currentValue) * pixelsPerUnit);
 
 		actions.dragAndDropBy(SliderElement, -offsetMin, 0).perform();
@@ -243,15 +259,34 @@ public class BasicActions extends Base {
 		actions.clickAndHold(Element1).moveToElement(Element2).release().perform();
 	}
 
+	public void DragAndDrop(WebElement Source, WebElement Target) {
+		WaitForElementToBeVisibile(Source);
+		WaitForElementToBeVisibile(Target);
+		actions.dragAndDrop(Source, Target).perform();
+//		here .build() is not used for dragAndDrop action because 
+//		The .build() method is used to create a composite action when you chain multiple actions together. 
+//		Like actions.moveToElement(element).click().build().perform();. 
+//		The dragAndDrop() method is already a single, self-contained action. You can directly use .perform() without .build()
+
+	}
+
 	public void BrokenImage(WebElement ImageLocator) {
 		WaitForElementToBeVisibile(ImageLocator);
-		if (ImageLocator.getAttribute("naturalWidth").equals("0")) {
-			System.out.println("Image is broken");
+
+		Boolean isImageBroken = (Boolean) js.executeScript("return arguments[0].naturalWidth == 0", ImageLocator);
+
+		if (isImageBroken) {
+			System.out.println("The image is broken.");
 		}
+
+		// Depricated
+//		if (ImageLocator.getAttribute("naturalWidth").equals("0")) {
+//			System.out.println("Image is broken");
+//		}
 	}
 
 	public void brokenLink(WebElement Link) {
-		String HrefAttValue = Link.getAttribute("href");
+		String HrefAttValue = Link.getDomAttribute("href");
 		if (HrefAttValue == null || HrefAttValue.isEmpty()) {
 			System.out.println("href attribulte value is null or empty");
 		}
@@ -275,6 +310,7 @@ public class BasicActions extends Base {
 	public void NavToReqModule(WebElement HomePageLocator, WebElement TestCaseLocator) {
 		ScrollUsingJSE(HomePageLocator);
 		click(HomePageLocator);
+		ScrollUsingJSE(TestCaseLocator);
 		click(TestCaseLocator);
 	}
 
@@ -298,16 +334,15 @@ public class BasicActions extends Base {
 //	If you directly write pixels without concatenation, it won’t work, as Java doesn't support interpolation inside plain strings 
 //		like some other languages.
 
-//	public void scrollPageUsingJSE(int pixels) {
-//		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		js.executeScript("window.scrollby(0," + pixels + ")");
-//	}
+	public void scrollByPixels(int pixels) {
+		js.executeScript("window.scrollBy(0," + pixels + ");");
+	}
 
 	public void SelectJSChkbox(WebElement ShadowHost, String StringShadowDom, String AttributeKey,
 			String ExpectedAttributeValue) {
 		WebElement ShadowDom = (WebElement) js
 				.executeScript("return arguments[0].shadowRoot.querySelector('" + StringShadowDom + "')", ShadowHost);
-		String ActualAttributeValue = ShadowDom.getAttribute(AttributeKey);
+		String ActualAttributeValue = ShadowDom.getDomAttribute(AttributeKey);
 		if (ActualAttributeValue.contains(ExpectedAttributeValue)) {
 			click(ShadowHost);
 		}
@@ -318,7 +353,7 @@ public class BasicActions extends Base {
 			String ExpectedAttributeValue) {
 		WebElement ShadowDom = (WebElement) js
 				.executeScript("return arguments[0].shadowRoot.querySelector('" + StringShadowDom + "')", ShadowHost);
-		String ActualAttributeValue = ShadowDom.getAttribute(AttributeKey);
+		String ActualAttributeValue = ShadowDom.getDomAttribute(AttributeKey);
 		if (!ActualAttributeValue.contains(ExpectedAttributeValue)) {
 			click(ShadowHost);
 		}

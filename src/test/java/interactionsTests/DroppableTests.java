@@ -26,7 +26,7 @@ public class DroppableTests extends Base {
 		ba.GetTextNdAssert(DroppableLocator, AfterDropTxt);
 	}
 
-	@Test
+	@Test(groups = {"smoke"})
 	public void DropTest() {
 
 		BasicActions ba = new BasicActions();

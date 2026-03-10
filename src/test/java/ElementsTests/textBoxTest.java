@@ -10,7 +10,7 @@ import elementsLocators.textBoxLocators;
 
 public class textBoxTest extends Base {
 
-	@Test
+	@Test(groups = {"smoke"})
 	public void TextBox() {
 
 		String FullName = "Suppu";

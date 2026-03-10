@@ -14,7 +14,7 @@ public class DriverFactory {
 		return instance;
 	}
 
-	ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+	private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
 	public WebDriver getDriver() {
 		return driver.get();
@@ -24,8 +24,8 @@ public class DriverFactory {
 		driver.set(driverPraram);
 	}
 
-	public void closeBrowser() {
-		driver.get().close();
+	public void removeDriver() {
+		driver.get().quit();
 		driver.remove();
 	}
 

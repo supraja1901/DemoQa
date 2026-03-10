@@ -12,11 +12,11 @@ public class linksTest extends Base {
 
 	@Test
 	public void LinksTest() throws InterruptedException {
-		if (driver != null) {
-			System.out.println("I'm not null");
-		} else {
-			System.out.println("I'm null");
-		}
+//		if (driver != null) {
+//			System.out.println("I'm not null");
+//		} else {
+//			System.out.println("I'm null");
+//		}
 
 		String LinkText = "Links";
 		String CreatedResponse = "Link has responded with staus 201 and status text Created";

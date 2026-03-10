@@ -7,16 +7,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-public class Base {
-	protected WebDriver driver;
+public abstract class Base {
+//	protected WebDriver driver;
 
 	public WebDriver intializeDriver() throws IOException {
 
-		driver = new ChromeDriver();
+		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		return driver;
 	}
+	public WebDriver Driver() {
+		return DriverFactory.getInstance().getDriver();
 
+	}
 	public void wrapper(int time) {
 		try {
 			Thread.sleep(time);
@@ -30,18 +33,15 @@ public class Base {
 		DriverFactory.getInstance().setDriver(intializeDriver());
 		Driver().get("https://demoqa.com/");
 		BasicActions ba = new BasicActions();
-		ba.waitForPageLoad(driver);
+		ba.waitForPageLoad(Driver());
 
 	}
 
-	public WebDriver Driver() {
-		return DriverFactory.getInstance().getDriver();
 
-	}
 
 	@AfterMethod
 	public void tearDown() {
-		Driver().quit();
+		DriverFactory.getInstance().removeDriver();
 	}
 
 //	Static driver: By making driver static, it’s initialized only once and shared among all instances that extend Base.
